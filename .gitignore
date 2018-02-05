@@ -1,0 +1,28 @@
+# package files
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+#eclipse project file
+.checkstyle
+.classpath
+.project
+.settings
+
+#android studio project file
+local.properties
+gradle.properties
+.gradle
+gradle
+build
+gradlew
+.bat
+.idea
+*.iml
+*.pro
+*/Keystore
+api.key
+custom-versions/*
+*/signature.asc
