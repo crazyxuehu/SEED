@@ -149,7 +149,7 @@ public class SearchServiceImp implements SearchService {
 		List<Entity>ll=new ArrayList<Entity>();
 		double myweight=0;
 		for(int i=0;i<list.size();i++){
-			if(weight!=null&&weight.size()!=0) {
+			if(weight.size()!=0) {
 				myweight=weight.get(i);
 			}else {
 				myweight=1.0;
@@ -167,16 +167,16 @@ public class SearchServiceImp implements SearchService {
 	public List getFeature(List<String> featureList, List<Integer> directionList, List<String> relationList, List<Double>featureWeight) {
 		// TODO Auto-generated method stub
 		List<Feature>ll = new ArrayList<Feature>();
-		double weight=0;
+		double weight=1;
 		for(int i=0;i<featureList.size();i++) {
 			Entity entity = DataUtil.getEnityByName(featureList.get(i));
 			if(entity == null) continue;
 			Relation relation = DataUtil.getRelationById(DataUtil.getRelationId(relationList.get(i)), directionList.get(i));
 			if(relation == null) continue;
-			if(featureWeight!=null&&featureWeight.size()>0)
-				ll.add(new Feature(entity,relation,featureWeight.get(i)));
+			if(featureWeight == null)
+				ll.add(new Feature(entity,relation,weight));
 			else
-				ll.add(new Feature(entity,relation,1));
+				ll.add(new Feature(entity,relation,featureWeight.get(0)));
 		}
 		return ll;
 	}
